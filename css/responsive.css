@@ -278,3 +278,18 @@ main > h1 {
 }
 .form-error { color: var(--color-danger); margin: 4px 0; }
 .is-invalid { border-color: var(--color-danger); }
+
+.cart-item {
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+.cart-item input {
+  width: 80px;
+  min-height: 44px;
+  margin: 0 16px;
+  font: inherit;
+}
+
+[hidden] { display: none !important; }

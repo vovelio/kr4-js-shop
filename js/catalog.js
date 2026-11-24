@@ -2,27 +2,39 @@
 function formatPrice(price) { return price.toLocaleString('ru-RU') + ' ₽'; }
 function calculateDiscount(price, discountPercent) { return price * discountPercent / 100; }
 function calculateFinalPrice(price, discountPercent) { return price - calculateDiscount(price, discountPercent); }
-function getProductStatus(product) { return product.isAvailable ? 'В наличии' : 'Нет в наличии'; }
+function getProductStatus(product) { if (product.isAvailable) return 'В наличии';
+  return 'Нет в наличии'; }
 function createProductSummary(product) {
   return product.title + ': ' + formatPrice(calculateFinalPrice(product.price, product.discountPercent)) + ', ' + getProductStatus(product);
 }
 function getProductTitles(items) { return items.map(product => product.title); }
 function getAvailableProducts(items) { return items.filter(product => product.isAvailable); }
 function searchProducts(items, query) {
-  return items.filter(product => product.title.toLowerCase().includes(query.trim().toLowerCase()));
+  const search = query.trim().toLowerCase();
+  return items.filter(product => {
+    const title = product.title.toLowerCase();
+    return title.includes(search);
+  });
 }
 function filterProductsByCategory(items, category) {
-  return category === 'all' ? items : items.filter(product => product.category === category);
+  if (category === 'all') return items;
+  return items.filter(product => product.category === category);
 }
 function sortProductsByPrice(items, direction = 'asc') {
-  return [...items].sort((a, b) => direction === 'desc' ? b.price - a.price : a.price - b.price);
+  const copy = [...items];
+  if (direction === 'desc') return copy.sort((a, b) => b.price - a.price);
+  return copy.sort((a, b) => a.price - b.price);
 }
 function findProductById(items, id) { return items.find(product => product.id === id); }
 function calculateTotalPrice(items) { return items.reduce((sum, product) => sum + product.price, 0); }
 function countAvailableProducts(items) { return getAvailableProducts(items).length; }
-function calculateAveragePrice(items) { return items.length ? Math.round(calculateTotalPrice(items) / items.length) : 0; }
+function calculateAveragePrice(items) { if (items.length === 0) return 0;
+  return Math.round(calculateTotalPrice(items) / items.length); }
 function getPreparedProducts(items, query, category, direction) {
-  return sortProductsByPrice(filterProductsByCategory(searchProducts(items, query), category), direction);
+  let result = searchProducts(items, query);
+  result = filterProductsByCategory(result, category);
+  result = sortProductsByPrice(result, direction);
+  return result;
 }
 
 // Практика 17: элементы создаются средствами DOM, текст — через textContent.
@@ -55,7 +67,13 @@ function createProductCard(product) {
   order.dataset.product = product.title;
   order.textContent = 'Заказать';
   order.disabled = !product.isAvailable;
-  actions.append(details, order);
+  const cartButton = document.createElement('button');
+  cartButton.classList.add('button', 'button--secondary');
+  cartButton.type = 'button';
+  cartButton.dataset.cartId = product.id;
+  cartButton.textContent = 'В корзину';
+  cartButton.disabled = !product.isAvailable;
+  actions.append(details, order, cartButton);
   card.append(title, image, price, status, actions);
   return card;
 }

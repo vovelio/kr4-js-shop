@@ -19,6 +19,8 @@
   </script>
   <script defer="" src="js/validation.js">
   </script>
+  <script defer="" src="js/cart.js">
+  </script>
   <script defer="" src="js/main.js">
   </script>
  </head>
@@ -73,6 +75,11 @@
         Обратная связь
        </a>
       </li>
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="cart.html">
+        Корзина
+       </a>
+      </li>
      </ul>
     </nav>
    </div>
@@ -125,6 +132,12 @@
        <option value="leave">
         Телепортация с пар
        </option>
+       <option value="travel-backpack">
+        Рюкзак для путешествий
+       </option>
+       <option value="large-case">
+        Большой пенал
+       </option>
       </select>
      </div>
      <!-- Имя -->
@@ -149,7 +162,7 @@
        Телефон
        *
       </label>
-      <input aria-describedby="order-phone-help" autocomplete="tel" class="order-form__input" id="order-phone" inputmode="tel" name="phone" pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$" placeholder="+7 (900) 000-00-00" required="" type="tel"/>
+      <input aria-describedby="order-phone-help" autocomplete="tel" class="order-form__input" id="order-phone" inputmode="tel" name="phone" placeholder="+7 (900) 000-00-00" required="" type="tel"/>
       <small id="order-phone-help">
        Формат: +7 (900) 000-00-00
       </small>

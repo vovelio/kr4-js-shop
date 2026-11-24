@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Страница оформления покупки — Учебный интернет-магазин" name="description"/>
+  <title>
+   Корзина — ShopProject
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <link href="css/responsive.css" rel="stylesheet"/>
+  <meta content="website" property="og:type"/>
+  <meta content="Учебный интернет-магазин" property="og:title"/>
+  <meta content="Учебный frontend-проект интернет-магазина." property="og:description"/>
+  <meta content="https://vovelio.github.io/kr4-js-shop/images/preview.jpg" property="og:image"/>
+  <script defer="" src="js/data.js">
+  </script>
+  <script defer="" src="js/catalog.js">
+  </script>
+  <script defer="" src="js/validation.js">
+  </script>
+  <script defer="" src="js/cart.js">
+  </script>
+  <script defer="" src="js/main.js">
+  </script>
+ </head>
+ <body>
+  <a class="skip-link" href="#main">
+   Перейти к основному содержимому
+  </a>
+  <header class="site-header">
+   <div class="site-header__inner">
+    <a class="site-header__logo" href="index.html">
+     ShopProject
+    </a>
+    <nav aria-label="Основная навигация" class="site-nav">
+     <ul class="site-nav__list">
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="index.html">
+        Главная
+       </a>
+      </li>
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="catalog.html">
+        Каталог
+       </a>
+      </li>
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="product.html">
+        Товар
+       </a>
+      </li>
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="order.html">
+        Заказ
+       </a>
+      </li>
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="contacts.html">
+        Контакты
+       </a>
+      </li>
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="index.html#advantages">
+        Преимущества
+       </a>
+      </li>
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="index.html#popular">
+        Популярные товары
+       </a>
+      </li>
+      <li class="site-nav__item">
+       <a class="site-nav__link" href="contacts.html#contacts">
+        Обратная связь
+       </a>
+      </li>
+      <li class="site-nav__item">
+       <a aria-current="page" class="site-nav__link site-nav__link--active" href="cart.html">
+        Корзина
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <main id="main" tabindex="-1">
+   <section class="section">
+    <h1>
+     Корзина
+    </h1>
+    <p id="cart-empty">
+     Корзина пуста.
+     <a href="catalog.html">
+      Перейти в каталог
+     </a>
+    </p>
+    <div id="cart-items">
+    </div>
+    <form id="promo-form">
+     <label for="promo-code">
+      Промокод
+     </label>
+     <input id="promo-code" name="promo" placeholder="STUDENT10" type="text"/>
+     <button class="button button--secondary" type="submit">
+      Применить промокод
+     </button>
+     <p id="promo-message" role="status">
+      Учебный промокод STUDENT10 даёт скидку 10%.
+     </p>
+    </form>
+    <p aria-live="polite" id="cart-total">
+    </p>
+    <a class="button button--primary" hidden="" href="order.html" id="cart-order">
+     Оформить заявку
+    </a>
+    <p>
+     Учебный проект: оплата не производится.
+    </p>
+   </section>
+  </main>
+  <footer class="site-footer">
+   <p>
+    © 2026 Учебный проект. Все права защищены.
+   </p>
+   <p>
+    Дисциплина: Фронтенд и бэкенд разработка
+   </p>
+  </footer>
+ </body>
+</html>
